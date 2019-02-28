@@ -7,12 +7,10 @@ class Card extends React.Component {
 
 	render() {
         return (
-			<a href="#" className="card">
+			<a onClick={() => { this.props.onUpdatePanel('UserProfile',this.props.id)}} className="card">
 				<img src={this.props.image} className="card-image"/>
 				<div className="card-info">
 					<div className="card-name">{this.props.name + ' ' + this.props.surname}</div>
-					<div className="card-phone">{this.props.phone}</div>
-					<div className="card-mail">{this.props.mail}</div>
 				</div>
 			</a>
 		);
