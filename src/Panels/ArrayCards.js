@@ -1,0 +1,43 @@
+export var arrayCards = [{
+	id: 0,
+	name: 'Михаил',
+	surname: 'Петров',
+	image: 'https://playground24.ru/img/mike.png',
+	phone: '89994307232',
+	mail: 'mike@mail.ru'
+}, {
+	id: 1,
+	name: 'Савва',
+	surname: 'Антонюк',
+	image: 'https://playground24.ru/img/savva.png',
+	phone: '89994357232',
+	mail: 'savva@mail.ru'
+}, {
+	id: 2,
+	name: 'Алексей',
+	surname: 'Полоз',
+	image: 'https://playground24.ru/img/alex.png',
+	phone: '89434357542',
+	mail: 'poloz@mail.ru'
+}, {
+	id: 3,
+	name: 'Леонид',
+	surname: 'Романычев',
+	image: 'https://playground24.ru/img/leonid.png',
+	phone: '89434357542',
+	mail: 'leoneed@mail.ru'
+}, {
+	id: 4,
+	name: 'Ксения',
+	surname: 'Манскова',
+	image: 'https://playground24.ru/img/ksenia.png',
+	phone: '89434357542',
+	mail: 'ksenia@mail.ru'
+}, {
+	id: 5,
+	name: 'Сергей',
+	surname: 'Айхель',
+	image: 'https://playground24.ru/img/sergei.png',
+	phone: '89402357542',
+	mail: 'sergei@mail.ru'
+}];
