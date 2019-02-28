@@ -7,14 +7,14 @@ class Card extends React.Component {
 
 	render() {
         return (
-			<li>
-				<img src={this.props.image} width="60px" height="60px" className="contact-image"/>
-				<div className="contact-info">
-					<div className="contact-name">{this.props.name + ' ' + this.props.surname}</div>
-					<div className="contact-number">{this.props.phone}</div>
-					<div className="contact-number">{this.props.mail}</div>
+			<a href="#" className="card">
+				<img src={this.props.image} className="card-image"/>
+				<div className="card-info">
+					<div className="card-name">{this.props.name + ' ' + this.props.surname}</div>
+					<div className="card-phone">{this.props.phone}</div>
+					<div className="card-mail">{this.props.mail}</div>
 				</div>
-			</li>
+			</a>
 		);
 	}
 }
