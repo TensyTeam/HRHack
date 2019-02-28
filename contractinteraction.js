@@ -55,6 +55,18 @@ function passStep(_id, _duration) {
 
 }
 
+function getNumberOfEmployees() {
+
+    contract.getNumberOfEmployees.call((error, result) => {
+        if(error) {
+            return console.log(error);
+        }
+        console.log(result);
+        return result;
+    });
+
+}
+
 function getNumberOfSteps(_employeeId) {
 
     contract.getNumberOfSteps.call(_employeeId, (error, result) => {
@@ -78,5 +90,19 @@ function getEmployeeStep(_employeeId, _stepId) {
         console.log(result);
         return result; // array of id, date, duration, solverId
     });
+
+}
+
+function getHistory() {
+
+    let history;
+    numOfEmployees = getNumberOfEmployees();
+    for (i = 0; i < numOfEmployees; i++) {
+        numOfSteps = getNumberOfSteps();
+        for(j = 0; j < numOfSteps; j++) {
+            history.push(getEmployeeStep(i, j));
+        }
+    }
+    return history; // array of all the steps
 
 }
