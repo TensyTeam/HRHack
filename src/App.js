@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Main from './Panels/Main';
+import CardList from './Panels/CardList';
 
 class App extends React.Component {
 	constructor (props) {
@@ -8,16 +8,11 @@ class App extends React.Component {
 		this.state = {
 			activePanel: 'games'
 		};
-		this.onChangePanel = this.onChangePanel.bind(this);
-	}
-
-	onChangePanel (e) {
-		this.setState({ activePanel: e.currentTarget.dataset.panel })
 	}
 
 	render() {
 		return (
-			<Main />
+			<CardList />
 		);
 	}
 }
