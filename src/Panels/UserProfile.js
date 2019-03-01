@@ -6,7 +6,7 @@ class UserProfile extends React.Component {
 	render() {
 		return (
 			<div id="UserProfile">
-				<div className="title">HR 2.0</div>
+				<div className="title">Tensegrity</div>
 				<div className="container">
 					<button onClick={() => { this.props.onUpdatePanel('CardList')}} className="btn">Назад</button>
 					<div className="content-profile">
