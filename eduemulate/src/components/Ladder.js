@@ -1,8 +1,5 @@
 import React, {Component} from 'react'
 
-// import web3 from 'web3'
-
-// import passStep from './contractinteraction'
 import {network} from './sets'
 
 
@@ -37,9 +34,7 @@ class Ladders extends Component {
 	}
 
 	handleSmartContract = () => {
-		// console.log('!1')
 		// window.addEventListener('load', () => {
-			// console.log('!2')
 			if (typeof(window.web3) == 'undefined') {
 				return console.log('Metamask is not installed')
 			}
