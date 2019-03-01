@@ -61,8 +61,8 @@ function getNumberOfEmployees() {
         if(error) {
             return console.log(error);
         }
-        console.log(result);
-        return result;
+        console.log(result.c[0]);
+        return result.c[0];
     });
 
 }
@@ -73,8 +73,8 @@ function getNumberOfSteps(_employeeId) {
         if(error) {
             return console.log(error);
         }
-        console.log(result);
-        return result;
+        console.log(result.c[0]);
+        return result.c[0];
     });
 
 }
@@ -87,22 +87,28 @@ function getEmployeeStep(_employeeId, _stepId) {
         if(error) {
             return console.log(error);
         }
-        console.log(result);
-        return result; // array of id, date, duration, solverId
+        console.log([result[0].c[0], result[1].c[0], result[2].c[0], result[3].c[0]]);
+        
+        return [result[0].c[0], result[1].c[0], result[2].c[0], result[3].c[0]]; // array of id, date, duration, solverId
     });
 
 }
 
+//do not work
 function getHistory() {
 
-    let history;
-    numOfEmployees = getNumberOfEmployees();
+    var history = [];
+    numOfEmployees =  getNumberOfEmployees(); // further code do no wait
+    console.log(numOfEmployees);
     for (i = 0; i < numOfEmployees; i++) {
         numOfSteps = getNumberOfSteps();
+        console.log('hui');
         for(j = 0; j < numOfSteps; j++) {
-            history.push(getEmployeeStep(i, j));
+            var step = getEmployeeStep(i, j);
+            history.push(step);
         }
     }
+    console.log(history);
     return history; // array of all the steps
 
 }
