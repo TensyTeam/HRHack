@@ -64,7 +64,7 @@ a {
 }
 
 .input {
-    font-size: 26px;
+    font-size: 17px;
     display: grid;
     text-align: center;
     margin: 0 auto;
@@ -253,5 +253,5 @@ a {
     margin: 10px;
     background: #fff;
     border-radius: 5px;
-    padding-bottom: 20px;
+    padding: 0 15px 20px;
 }
