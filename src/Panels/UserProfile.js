@@ -11,19 +11,14 @@ import { dic } from './DictSteps'
 class UserProfile extends React.Component {
 	state = {
 		cards: cards,
-		steps: [],
-		finish: false
+		steps: []
+	}
+
+	componentWillMount() {
+		getHistory().then((e) => this.setState({ steps: e }));
 	}
 
 	componentDidMount() {
-		getHistory().then((e) => this.setState({ steps: e, finish: true}));
-		// getHistory().then((e) => console.log(e));
-		// while (!this.state.finish) {
-			// console.log(1)
-		// }
-		// console.log(222222222222)
-		// Подготовка данных для графика 1
-
 		const user = 1
 		let steps = Array.from(new Set(this.state.cards.map(card => {return card.step}))).sort()
 		let steps_me = {}
@@ -255,7 +250,6 @@ class UserProfile extends React.Component {
 		return (
 			<div id="UserProfile">
 				<div className="title">Tensegrity</div>
-				{this.state.steps}
 				<div className="container">
 					<div className="sidebar">
 						<button onClick={() => { this.props.onUpdatePanel('CardList')}} className="btn">Назад</button>
