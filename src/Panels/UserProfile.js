@@ -5,26 +5,31 @@ import Chart from 'chart.js'
 import { arrayCards } from './ArrayCards';
 import { getHistory, newEmployee } from './Functions';
 import { cards } from './DataCards'
+import { dic } from './DictSteps'
 
 
 class UserProfile extends React.Component {
 	state = {
-		cards: cards
+		cards: cards,
+		steps: [],
+		finish: false
 	}
 
 	componentDidMount() {
-		getHistory().then(x => console.log(x));
-
+		getHistory().then((e) => this.setState({ steps: e, finish: true}));
+		// getHistory().then((e) => console.log(e));
+		// while (!this.state.finish) {
+			// console.log(1)
+		// }
+		// console.log(222222222222)
 		// Подготовка данных для графика 1
 
 		const user = 1
-
 		let steps = Array.from(new Set(this.state.cards.map(card => {return card.step}))).sort()
-
 		let steps_me = {}
 		let steps_other = {}
 		let steps_unique = {}
-	
+
 		steps.map(step => {
 			for (let i in this.state.cards) {
 				let id = this.state.cards[i].step
@@ -54,7 +59,7 @@ class UserProfile extends React.Component {
 
 		let x_me = []
 		let x_other = []
-	
+
 		steps.map(step => {
 			if (step in steps_me) {
 				x_me.push(steps_me[step])
@@ -62,7 +67,7 @@ class UserProfile extends React.Component {
 				x_me.push(0)
 			}
 		})
-	
+
 		steps.map(step => {
 			if (step in steps_other) {
 				x_other.push(steps_other[step])
@@ -244,24 +249,13 @@ class UserProfile extends React.Component {
 				}
 			}
 		})
-
-		//
-
     }
 
 	render() {
-		const steps = this.state.cards.map(card =>
-			<div className="box" key={ Math.random() }>
-				<h1>
-					User: { card.user } &nbsp; | &nbsp; Step: { card.step }
-				</h1>
-				Time: { card.time_stop - card.time_start }
-			</div>
-		)
-	
 		return (
 			<div id="UserProfile">
 				<div className="title">Tensegrity</div>
+				{this.state.steps}
 				<div className="container">
 					<div className="sidebar">
 						<button onClick={() => { this.props.onUpdatePanel('CardList')}} className="btn">Назад</button>
@@ -277,15 +271,23 @@ class UserProfile extends React.Component {
 					</div>
 					<div className="content">
 						<br /><hr /><br />
-						<canvas id="chart1" height="250" style={ {maxWidth: '90%'} }></canvas>
+						<canvas id="chart4" height="210" style={ {maxWidth: '90%'} }></canvas>
 						<br /><hr /><br />
-						<canvas id="chart2" height="250" style={ {maxWidth: '90%' } }></canvas>
+						<canvas id="chart2" height="210" style={ {maxWidth: '90%' } }></canvas>
 						<br /><hr /><br />
-						<canvas id="chart3" height="250" style={ {maxWidth: '90%'} }></canvas>
+						<canvas id="chart3" height="210" style={ {maxWidth: '90%'} }></canvas>
 						<br /><hr /><br />
-						<canvas id="chart4" height="250" style={ {maxWidth: '90%'} }></canvas>
+						<canvas id="chart1" height="210" style={ {maxWidth: '90%'} }></canvas>
 						<br /><hr /><br />
-						{ steps }
+						<div className="steps-list-profile">
+							{this.state.steps.map(step =>
+							<div className="step" key={ Math.random() }>
+								<h1>
+									{ dic[step[0]] }
+								</h1>
+								Время: { step[2] }
+							</div>)}
+						</div>
 					</div>
 				</div>
 			</div>
