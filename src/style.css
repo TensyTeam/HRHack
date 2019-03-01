@@ -24,12 +24,6 @@ a {
     display: flex;
 }
 
-#UserProfile .container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 .cards-list {
     margin: 20px 0;
     display: flex;
@@ -81,6 +75,7 @@ a {
 }
 
 .content-profile {
+    max-width: 300px;
     background: #fff;
     border-radius: 5px;
     margin: 10px;
@@ -101,6 +96,17 @@ a {
 
 .sidebar {
     width: 20%;
+}
+
+#UserProfile .sidebar {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#UserProfile .content {
+    width: 70%;
 }
 
 .content {
