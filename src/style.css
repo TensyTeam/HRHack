@@ -89,6 +89,7 @@ a {
 }
 
 .card {
+    cursor: pointer;
     border-radius: 5px;
     background: #fff;
     display: flex;
@@ -108,7 +109,6 @@ a {
     flex-direction: column;
     align-items: center;
 }
-
 
 .inputGroup {
     border-radius: 5px;
@@ -197,7 +197,7 @@ a {
 .steps-list {
     padding: 0 16px;
     max-width: 550px;
-    margin: 50px auto;
+    margin: 20px auto;
     font-size: 18px;
     font-weight: 600;
     box-sizing: border-box;
@@ -224,4 +224,11 @@ a {
 
 .btn:hover {
     background-color: #2980b9;
+}
+
+.subtitle {
+    font-size: 14px;
+    padding: 0;
+    margin: 0;
+    color: #c1c2c3;
 }
