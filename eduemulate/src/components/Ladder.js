@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 
-import web3 from 'web3'
+// import web3 from 'web3'
 
-import passStep from './contractinteraction'
+// import passStep from './contractinteraction'
 import {network} from './sets'
 
 
@@ -37,16 +37,32 @@ class Ladders extends Component {
 	}
 
 	handleSmartContract = () => {
-		console.log('!1')
-		window.addEventListener('load', () => {
-			console.log('!2')
+		// console.log('!1')
+		// window.addEventListener('load', () => {
+			// console.log('!2')
 			if (typeof(window.web3) == 'undefined') {
 				return console.log('Metamask is not installed')
 			}
 
-			let contract = web3.eth.contract(network.abi).at(network.contract_address)
+			let contract = window.web3.eth.contract(network.abi).at(network.contract_address)
 			console.log(contract)
-		});
+		// });
+
+		function passStep(_id, _duration) {
+			contract.passStep.sendTransaction(
+				_id, _duration,
+				{gasPrice: window.web3.toWei(8.1, 'Gwei'), gas: 3000000},
+				(error, result) => {
+					if (error) {
+						return console.log(error)
+					}
+					console.log("txhash: " + result)
+				}
+			)
+		
+		}
+
+		passStep(22, 150)
 	}
 }
 

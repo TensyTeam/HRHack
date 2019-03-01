@@ -15,7 +15,7 @@ class Body extends Component {
 			<div className="container has-background-white" id="body">
 				<div className="columns">
 					<div className="column is-one-fifth">
-						<LeftMenu economics={ this.economics } programming={ this.programming } management={ this.hacks } />
+						<LeftMenu category={ this.category } programming={ this.programming } management={ this.hacks } />
 					</div>
 
 					<div className="column">
@@ -29,21 +29,9 @@ class Body extends Component {
 		)
 	}
 
-	economics = () => {
+	category = x => {
 		this.setState({
-			cont: 'economics'
-		})
-	}
-
-	programming = () => {
-		this.setState({
-			cont: 'programming'
-		})
-	}
-
-	hacks = () => {
-		this.setState({
-			cont: 'hacks'
+			cont: x
 		})
 	}
 }

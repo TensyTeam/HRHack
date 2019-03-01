@@ -1,13 +1,10 @@
-import web3 from 'web3'
-
 let contract;
 
 
-function newEmployee(_name, _phone, _email) {
-               
+function newEmployee(_name, _phone, _email) {       
     contract.newEmployee.sendTransaction(
         _name, _phone, _email,
-        {gasPrice: web3.toWei(8.1, 'Gwei'), gas: 3000000},
+        {gasPrice: window.web3.toWei(8.1, 'Gwei'), gas: 3000000},
         (error, result) => {
             if (error) {
                 return console.log(error);
@@ -15,48 +12,41 @@ function newEmployee(_name, _phone, _email) {
              console.log("txhash: " + result);
         }
     )
-
 }
 
-function changeEmployee(_newName, _newPhone, _newEmail) {
-               
+function changeEmployee(_newName, _newPhone, _newEmail) {    
     contract.changeEmployee.sendTransaction(
         _newName, _newPhone, _newEmail,
-        {gasPrice: web3.toWei(8.1, 'Gwei'), gas: 3000000},
+        {gasPrice: window.web3.toWei(8.1, 'Gwei'), gas: 3000000},
         (error, result) => {
             if (error) {
                 return console.log(error);
             }
-             console.log("txhash: " + result);
+            console.log("txhash: " + result);
         }
     )
-
 }
 
 function getEmployee(_id) {
-
     contract.getEmployee.call(_id, (error, result) => {
         if(error) {
             return console.log(error);
         }
         return result; // - array of 3 strings
     });
-
 }
 
-function passStep(_id, _duration) {
-               
+function passStep(_id, _duration) {      
     contract.passStep.sendTransaction(
         _id, _duration,
-        {gasPrice: web3.toWei(8.1, 'Gwei'), gas: 3000000},
+        {gasPrice: window.web3.toWei(8.1, 'Gwei'), gas: 3000000},
         (error, result) => {
-            if(error) {
+            if (error) {
                 return console.log(error);
             }
             console.log("txhash: " + result);
         }
     )
-
 }
 
 function getNumberOfEmployees() {
@@ -69,7 +59,6 @@ function getNumberOfEmployees() {
         });
     
     });
-    
 }
 
 function getNumberOfSteps(_employeeId) {
@@ -80,9 +69,7 @@ function getNumberOfSteps(_employeeId) {
             }
             resolve(result.c[0]);
         });
-    
     });
-    
 }
 
 function getEmployeeStep(_employeeId, _stepId) {
@@ -91,35 +78,30 @@ function getEmployeeStep(_employeeId, _stepId) {
             if (error) {
                 return console.log(error);
             }
-            resolve([result[0].c[0], result[1].c[0], result[2].c[0], result[3].c[0]]);
-        });
-    });
-    
+            resolve([result[0].c[0], result[1].c[0], result[2].c[0], result[3].c[0]])
+        })
+    })
 }
 
 function getHistory() {
     return new Promise(function(resolve, reject) {
-    var history = [];
-    getNumberOfEmployees().then(numOfEmployees =>
-        {
-            for (let i = 0; i < numOfEmployees; i++) {
-                const bla = i;
-                getNumberOfSteps(i).then(numOfSteps =>
-                    {   
-                        for(let j = 0; j < numOfSteps; j++) {
-                            getEmployeeStep(bla, j).then(step => {
-                                history.push(step);
-                                resolve(history); // array of all the steps
-                            })
-                            
-                        }
-                    })
-        
-    }
+    var history = []
 
-        }
-    )
-    });
+    getNumberOfEmployees().then(numOfEmployees => {
+        for (let i = 0; i < numOfEmployees; i++) {
+            const bla = i
+            getNumberOfSteps(i).then(numOfSteps => {   
+                for (let j = 0; j < numOfSteps; j++) {
+                    getEmployeeStep(bla, j).then(step => {
+                        history.push(step)
+                        resolve(history)
+                    })
+                        
+                    }
+                })
+            }
+        })
+    })
 }
 
 // function obertkaGetEmployee() {
