@@ -1,0 +1,218 @@
+<html>
+    <head>
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+      <script>
+        const contract_address = "0xf5c93e9e691479098add52c0c2334fa88eb5a29a";
+        const abi = [
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "_newName",
+                "type": "string"
+              },
+              {
+                "name": "_newPhone",
+                "type": "string"
+              },
+              {
+                "name": "_newEmail",
+                "type": "string"
+              }
+            ],
+            "name": "changeEmployee",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "_name",
+                "type": "string"
+              },
+              {
+                "name": "_phone",
+                "type": "string"
+              },
+              {
+                "name": "_email",
+                "type": "string"
+              }
+            ],
+            "name": "newEmployee",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": false,
+            "inputs": [
+              {
+                "name": "_id",
+                "type": "uint256"
+              },
+              {
+                "name": "_duration",
+                "type": "uint256"
+              }
+            ],
+            "name": "passStep",
+            "outputs": [],
+            "payable": false,
+            "stateMutability": "nonpayable",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "name": "employees",
+            "outputs": [
+              {
+                "name": "name",
+                "type": "string"
+              },
+              {
+                "name": "phone",
+                "type": "string"
+              },
+              {
+                "name": "email",
+                "type": "string"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "_id",
+                "type": "uint256"
+              }
+            ],
+            "name": "getEmployee",
+            "outputs": [
+              {
+                "name": "_name",
+                "type": "string"
+              },
+              {
+                "name": "_phone",
+                "type": "string"
+              },
+              {
+                "name": "_email",
+                "type": "string"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "_employeeId",
+                "type": "uint256"
+              },
+              {
+                "name": "_stepId",
+                "type": "uint256"
+              }
+            ],
+            "name": "getEmployeeStep",
+            "outputs": [
+              {
+                "name": "_id",
+                "type": "uint256"
+              },
+              {
+                "name": "_date",
+                "type": "uint256"
+              },
+              {
+                "name": "_duration",
+                "type": "uint256"
+              },
+              {
+                "name": "_solver",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [],
+            "name": "getNumberOfEmployees",
+            "outputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          },
+          {
+            "constant": true,
+            "inputs": [
+              {
+                "name": "_employeeId",
+                "type": "uint256"
+              }
+            ],
+            "name": "getNumberOfSteps",
+            "outputs": [
+              {
+                "name": "",
+                "type": "uint256"
+              }
+            ],
+            "payable": false,
+            "stateMutability": "view",
+            "type": "function"
+          }
+        ];
+
+        let contract;
+        window.addEventListener('load', () => {
+          if(typeof(window.web3) == 'undefined') {
+              return console.log("Metamask is not installed");
+          }
+
+          contract = web3.eth.contract(abi).at(contract_address);
+
+        });
+      </script>
+    </head>
+    <body>
+      <script src="src/index.js"></script>
+      <div id="message">lol</div>
+      <button id="button" onclick="newEmployee('2', '2', '2')">new employee</button>
+      <button id="button" onclick="changeEmployee('3', '3', '3')">change employee</button>
+      <button onclick="obertkaGetEmployee(0)">Get employee</button>
+      <button id="button" onclick="passStep(0, 0)">pass step 0 0</button>
+      <button id="button" onclick="passStep(1, 1)">pass step 1 1</button>
+      <button id="button" onclick="passStep(2, 2)">pass step 2 2</button>
+      <button onclick="obertkaGetNumberOfEmployees()">Get num emplo</button>
+      <button onclick="obertkaGetNumberOfSteps(0)">Get nub steps</button>
+      <button onclick="obertkaGetEmployeeStep(0, 2)">Get employee step</button>
+      <button onclick="obertkaGetHistory()">Get history</button>      
+    </body>
+</html>

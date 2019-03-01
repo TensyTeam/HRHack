@@ -1,10 +1,15 @@
+import web3 from 'web3'
+
+let contract;
+
+
 function newEmployee(_name, _phone, _email) {
                
     contract.newEmployee.sendTransaction(
         _name, _phone, _email,
         {gasPrice: web3.toWei(8.1, 'Gwei'), gas: 3000000},
         (error, result) => {
-            if(error) {
+            if (error) {
                 return console.log(error);
             }
              console.log("txhash: " + result);
@@ -19,7 +24,7 @@ function changeEmployee(_newName, _newPhone, _newEmail) {
         _newName, _newPhone, _newEmail,
         {gasPrice: web3.toWei(8.1, 'Gwei'), gas: 3000000},
         (error, result) => {
-            if(error) {
+            if (error) {
                 return console.log(error);
             }
              console.log("txhash: " + result);
@@ -57,7 +62,7 @@ function passStep(_id, _duration) {
 function getNumberOfEmployees() {
     return new Promise(function(resolve, reject) {
         contract.getNumberOfEmployees.call((error, result) => {
-            if(error) {
+            if (error) {
                 return console.log(error);
             }
             resolve(result.c[0]);
@@ -69,8 +74,8 @@ function getNumberOfEmployees() {
 
 function getNumberOfSteps(_employeeId) {
     return new Promise(function(resolve, reject) {
-        let la = contract.getNumberOfSteps.call(_employeeId, (error, result) => {
-            if(error) {
+        contract.getNumberOfSteps.call(_employeeId, (error, result) => {
+            if (error) {
                 return console.log('la',error);
             }
             resolve(result.c[0]);
@@ -83,7 +88,7 @@ function getNumberOfSteps(_employeeId) {
 function getEmployeeStep(_employeeId, _stepId) {
     return new Promise(function(resolve, reject) {
         contract.getEmployeeStep.call(_employeeId, _stepId, (error, result) => {
-            if(error) {
+            if (error) {
                 return console.log(error);
             }
             resolve([result[0].c[0], result[1].c[0], result[2].c[0], result[3].c[0]]);
@@ -97,11 +102,11 @@ function getHistory() {
     var history = [];
     getNumberOfEmployees().then(numOfEmployees =>
         {
-            for (i = 0; i < numOfEmployees; i++) {
+            for (let i = 0; i < numOfEmployees; i++) {
                 const bla = i;
                 getNumberOfSteps(i).then(numOfSteps =>
                     {   
-                        for(j = 0; j < numOfSteps; j++) {
+                        for(let j = 0; j < numOfSteps; j++) {
                             getEmployeeStep(bla, j).then(step => {
                                 history.push(step);
                                 resolve(history); // array of all the steps
