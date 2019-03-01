@@ -5,7 +5,7 @@ export var arrayCards = [{
 	image: 'https://playground24.ru/img/mike.png',
 	phone: '89994307232',
 	mail: 'mike@mail.ru',
-	skills: 'Макроэкономика, Микроэкономика, Гиперэкономика, React, Роутеризация, Набиваниепуфиков'
+	skills: 'Макроэкономика, Микроэкономика, Гиперэкономика, React, Роутеризация, Набивание пуфиков'
 }, {
 	id: 1,
 	name: 'Савва',
@@ -21,7 +21,7 @@ export var arrayCards = [{
 	image: 'https://playground24.ru/img/alex.png',
 	phone: '89434357542',
 	mail: 'poloz@mail.ru',
-	skills: 'Танцысбубном, Гиперэкономика, Макроэкономика'
+	skills: 'Танцы с бубном, Гиперэкономика, Макроэкономика'
 }, {
 	id: 3,
 	name: 'Леонид',
@@ -37,7 +37,7 @@ export var arrayCards = [{
 	image: 'https://playground24.ru/img/ksenia.png',
 	phone: '89434357542',
 	mail: 'ksenia@mail.ru',
-	skills: 'Мерч, Макроэкономика, Набиваниепуфиков, React, Микроэкономика'
+	skills: 'Мерч, Макроэкономика, Набивание пуфиков, React, Микроэкономика'
 }, {
 	id: 5,
 	name: 'Сергей',

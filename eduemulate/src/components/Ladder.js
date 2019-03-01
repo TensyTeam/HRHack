@@ -57,7 +57,7 @@ class Ladders extends Component {
 		
 		}
 
-		passStep(22, 150)
+		passStep(13, 75)
 	}
 }
 
