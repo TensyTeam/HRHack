@@ -1,7 +1,12 @@
 import React from 'react';
 import { arrayCards } from './ArrayCards';
+import { getHistory, newEmployee } from './Functions';
 
 class UserProfile extends React.Component {
+
+	componentDidMount() {
+        getHistory().then(x => console.log(x));
+    }
 
 	render() {
 		return (
