@@ -25,14 +25,34 @@ class Card extends React.Component {
 
 	// !Array.from(this.props.skills).length === true
 
+	// (((!this.props.search.length || (this.props.surname.toLowerCase() + ' ' + this.props.name.toLowerCase()).indexOf(this.props.search) !== -1) && (!Array.from(this.props.skills).length || intersection(Array.from(this.props.skills), skills).length)) == 0)
+
 	render() {
 		let skills = this.props.skill.toLowerCase().split(', ')
-		console.log(this.props.skills, skills, false || intersection(Array.from(this.props.skills), skills).length)
+		// console.log(this.props.skills, skills, false || intersection(Array.from(this.props.skills), skills).length)
+		let cond_1 = this.props.search.length
+		let cond_2 = (this.props.surname.toLowerCase() + ' ' + this.props.name.toLowerCase()).indexOf(this.props.search) != -1
+		let cond_3 = Array.from(this.props.skills).length
+		let cond_4 = intersection(Array.from(this.props.skills), skills).length
+
+		let var_1 = !cond_1 && !cond_3
+		let var_2 = !cond_1 && cond_3 && cond_4
+		let var_3 = cond_1 && !cond_3 && cond_2
+		let var_4 = cond_1 && cond_3 && cond_2 && cond_4
+
+		// console.log('-----')
+		// console.log('петров'.indexOf('петров'))
+		// console.log(cond_1, cond_2, cond_3, cond_4)
+		// console.log(var_1, var_2, var_3, var_4)
+		// console.log(this.props.surname.toLowerCase() + ' ' + this.props.name.toLowerCase(), '|', this.props.search, '|',this.props.surname.toLowerCase() + ' ' + this.props.name.toLowerCase().indexOf(this.props.search) == -1)
+
+		let varr = var_1 || var_2 || var_3 || var_4
+
         	return (
 			<div>
 			{ this.props.re }
 			{
-				((!this.props.search.length || (this.props.surname.toLowerCase() + ' ' + this.props.name.toLowerCase()).indexOf(this.props.search) !== -1) && (false || intersection(Array.from(this.props.skills), skills).length)) == 0 &&  
+				varr != 0 &&  
 				<a onClick={() => { this.props.onUpdatePanel('UserProfile',this.props.id)}} className="card">
 					<img src={this.props.image} className="card-image"/>
 					<div className="card-info">
